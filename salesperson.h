@@ -9,10 +9,9 @@ using namespace std;
 #include <numeric>
 #include <algorithm>
 
-#include "variables.h"
+
 #include "mainmenu.h"
 
-#include "functions.h"
 
 
 

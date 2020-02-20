@@ -10,10 +10,9 @@ using namespace std;
 #include <algorithm>
 #include <stdio.h>
 
-#include "variables.h"
 #include "mainmenu.h"
 #include "salesperson.h"
-#include "functions.h"
+
 
 class sales 
 {
