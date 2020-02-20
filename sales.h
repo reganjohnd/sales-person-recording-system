@@ -20,12 +20,13 @@ public:
 	int qty = 0;
 	int id = 0;
 	string date;
+	
 
 	sales();
 	sales(int id, int qty, string date);
 	~sales();
 
-	static void addSale();
+	//static void addSale();
 	int get_value(int x);
 	
 };

@@ -10,6 +10,7 @@ using namespace std;
 
 
 #include "mainmenu.h"
+#include "salesperson.h"
 
 
 

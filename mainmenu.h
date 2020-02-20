@@ -20,5 +20,6 @@ using namespace std;
 class mainmenu
 {
 public:
+	
 	static void mainMenu();
 };

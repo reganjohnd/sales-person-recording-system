@@ -29,22 +29,22 @@ int sales::get_value(int x)
 	return x * 22;
 }
 
-void sales::addSale()
+/*void sales::addSale()
 {
 	ofstream salesFigures;
 	ifstream salesPeople;
 	int id{}, qty{};
-	string s;
+	string date;
 
 	cout << "Date: ";
 	cin.ignore();
-	getline(cin, s);
+	getline(cin, date);
 	cout << "ID: ";
 	cin >> id;
 	cout << "quantity: ";
 	cin >> qty;
 
-	sales sales(id, qty, s);
+	sales sales(id, qty, date);
 
 	salesFigures.open("C:/Users/Roger/Documents/salesfigures.txt", ios::app | ios::out);
 	if (!salesFigures.is_open())
@@ -53,8 +53,16 @@ void sales::addSale()
 	}
 	else
 	{
-		salesFigures << s << "," << id << "," << qty << "," << sales.get_value(qty) << endl;
+		salesFigures << date << ",";
+		for (int i = 0; i < salesperson::spv.size(); i++)
+		{
+				if (id == salesperson::spv[i].id)
+				{
+					cout << salesperson::spv[i].name;
+				}
+		};
+		cout << "," << qty << "," << sales.get_value(qty) << endl;
 		salesFigures.close();
 	}
-}
+}*/
 

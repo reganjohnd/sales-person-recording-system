@@ -13,8 +13,7 @@ using namespace std;
 
 #include "mainmenu.h"
 #include "sales.h"
-
-
+#include "salesperson.h"
 
 void gotoxy(int x, int y)
 {
@@ -25,7 +24,8 @@ void mainmenu::mainMenu()
 {
 	while (1)
 	{
-		char menuSelect{};
+		system("CLS");
+		int menuSelect;
 		gotoxy(10, 3);
 		cout << "*************************************************************";
 		gotoxy(10, 23);
@@ -38,24 +38,19 @@ void mainmenu::mainMenu()
 		cout << "1->Add Sales person";
 		gotoxy(32, 12);
 		cout << "2->Add Sales Figure";
-		menuSelect = _getche();
-
-		/*if (menuSelect == 1)
-		{
-			salesperson::addSalesPerson();
-		}
-		else if (menuSelect == 2)
-		{
-			sales::addSale();
-		}*/
+		cin >> menuSelect;
+		
 		switch (menuSelect)
 		{
-		case '1':
+		case 1:
 			salesperson::addSalesPerson();
 			break;
 
-		case '2':
-			sales::addSale();
+		case 2:
+			salesperson::addSale();
+			break;
+		case 3:
+			salesperson::viewSalesPersons();
 			break;
 		}
 	}

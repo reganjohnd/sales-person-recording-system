@@ -149,6 +149,7 @@
     <ClInclude Include="mainmenu.h" />
     <ClInclude Include="sales.h" />
     <ClInclude Include="salesperson.h" />
+    <ClInclude Include="variables.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
