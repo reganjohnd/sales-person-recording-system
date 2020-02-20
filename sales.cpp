@@ -47,7 +47,14 @@ void sales::addSale()
 	sales sales(id, qty, s);
 
 	salesFigures.open("C:/Users/Roger/Documents/salesfigures.txt", ios::app | ios::out);
-	salesFigures << s <<","<< id <<","<< qty <<","<< sales.get_value(qty) << endl;
-	salesFigures.close();
+	if (!salesFigures.is_open())
+	{
+		cout << "File not found!" << endl;
+	}
+	else
+	{
+		salesFigures << s << "," << id << "," << qty << "," << sales.get_value(qty) << endl;
+		salesFigures.close();
+	}
 }
 

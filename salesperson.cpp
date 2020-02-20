@@ -10,17 +10,15 @@ using namespace std;
 #include <stdio.h>
 
 #include "mainmenu.h"
+#include "salesperson.h"
 
 
 
 
 
 
-salesperson::salesperson()
-{
-	string name{ "" };
-	int id = 0;
-}
+salesperson::salesperson(): id(0)
+{}
 
 salesperson::salesperson(string name, int id)
 	:name{ name }, id{ id }
@@ -39,14 +37,15 @@ istream& operator>> (istream& is, salesperson& p)
 	return is;
 }
 
-void getlines(string s)
+/*void getlines(string s)
 {
 	cin.ignore();
 	getline(cin, s);
-}
+}*/
 
 void salesperson::addSalesPerson()
 {
+	system("clr");
 	string s;
 	int i{};
 	ofstream salespersons;
@@ -61,6 +60,13 @@ void salesperson::addSalesPerson()
 	salesperson x{s, i};
 
 	salespersons.open("C:/Users/Roger/Documents/salespersons.txt", ios::app | ios::out);
-	salespersons << i << "," << s << endl;
-	salespersons.close();
+	if (!salespersons.is_open())
+	{
+		cout<<"File not found!"<<endl;
+	}
+	else
+	{
+		salespersons << i << "," << s << endl;
+		salespersons.close();
+	}
 }
