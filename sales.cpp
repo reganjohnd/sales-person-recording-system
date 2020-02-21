@@ -24,7 +24,7 @@ sales::sales(int id, int qty, string date)
 
 sales::~sales(){}
 
-int sales::get_value(int x)
+int sales::get_value(int& x)
 {
 	return x * 22;
 }

@@ -37,7 +37,7 @@ void mainmenu::mainMenu()
 		gotoxy(32, 10);
 		cout << "1->Add Sales person";
 		gotoxy(32, 12);
-		cout << "2->Add Sales Figure";
+		cout << "2->Add Sales Figure" << endl;;
 		cin >> menuSelect;
 		
 		switch (menuSelect)

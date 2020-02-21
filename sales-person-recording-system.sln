@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sales-person-recording-system", "sales-person-recording-system.vcxproj", "{1BAEFD6B-83EA-40E0-AD42-BC1FB142D76D}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "salesRecording", "..\salesRecording\salesRecording.vdproj", "{009C2C3E-B3E2-4432-A52E-7EC4624BD3E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,11 @@ Global
 		{1BAEFD6B-83EA-40E0-AD42-BC1FB142D76D}.Release|x64.Build.0 = Release|x64
 		{1BAEFD6B-83EA-40E0-AD42-BC1FB142D76D}.Release|x86.ActiveCfg = Release|Win32
 		{1BAEFD6B-83EA-40E0-AD42-BC1FB142D76D}.Release|x86.Build.0 = Release|Win32
+		{009C2C3E-B3E2-4432-A52E-7EC4624BD3E1}.Debug|x64.ActiveCfg = Debug
+		{009C2C3E-B3E2-4432-A52E-7EC4624BD3E1}.Debug|x64.Build.0 = Debug
+		{009C2C3E-B3E2-4432-A52E-7EC4624BD3E1}.Debug|x86.ActiveCfg = Debug
+		{009C2C3E-B3E2-4432-A52E-7EC4624BD3E1}.Release|x64.ActiveCfg = Release
+		{009C2C3E-B3E2-4432-A52E-7EC4624BD3E1}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

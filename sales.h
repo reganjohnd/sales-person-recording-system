@@ -27,6 +27,6 @@ public:
 	~sales();
 
 	//static void addSale();
-	int get_value(int x);
+	int get_value(int& x);
 	
 };

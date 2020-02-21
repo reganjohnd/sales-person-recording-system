@@ -2,10 +2,8 @@ using namespace std;
 
 #include <iostream>
 #include <string>
-#include <chrono>
 #include <fstream>
 #include <vector>
-#include <numeric>
 #include <algorithm>
 #include <stdio.h>
 #include "stdlib.h"
@@ -81,10 +79,30 @@ void salesperson::viewSalesPersons()
 }
 void salesperson::addSale()
 {
+	system("CLS");
 	ofstream salesFigures;
-	ifstream salesPeople;
-	int id{}, qty{};
+	ifstream input;
+
+	int id{};
+	int* pid{ &id };
+
+	int qty{};
+	int* pqty{ &qty };
+
 	string date;
+//	string* pdate{ &date };
+
+	string spID[10];
+//	string* pspID[10]{ &spID[10] };
+
+	string name[10]; 
+	//string* pname[10]{ &name[10] };
+
+	string line;
+	//string* pline{ &line };
+
+	int count{};
+	int* pcount{ &count };
 
 	cout << "Date: ";
 	cin.ignore();
@@ -93,38 +111,30 @@ void salesperson::addSale()
 	cin >> id;
 	cout << "quantity: ";
 	cin >> qty;
-
 	sales sales(id, qty, date);
-	 string line;
-	int num_of_lines{};
-
-	ifstream input;
+	
 	input.open("C:/Users/Roger/Documents/salespersons.txt");
-	//input.ignore(1, '\n');
-	while (!input.eof())
+	input.ignore(500, '\n');
+	
+	while (input)
 	{
 		getline(input, line);
-		num_of_lines++;
+		count++;
 	}
-	//vector<string> spID, spName;
-	string spID[100], spName[100];
-	//int spID_[100]{};
 
-	for (int i = 0; i < num_of_lines; i++)
+	input.clear(); //because previous 'while' statement reached the eof(), seekg will not work until file is cleared
+	input.seekg(1, ios::beg);
+	input.ignore(500, '\n');
+
+	for (int i = 0; i < count; i++)
 	{
 		getline(input, spID[i], ',');
-		getline(input, spName[i], ' ');
-		input.ignore(1, '\n');
+		getline(input, name[i], '\n');
 	}
-	int spID_ = atoi(spID[2].c_str());
-	//for (int i = 0; i < num_of_lines; i++)
-//	{
-//		spID_[i] = atoi(spID[i].c_str());
-//	}
-	cout << "!!!"<<spID_<<"!!!";
-	system("pause");
 
-	salesFigures.open("C:/Users/Roger/Documents/salesfigures.txt", ios::app | ios::out);
+	input.close();
+
+	salesFigures.open("C:/Users/Roger/Documents/salesfigures.txt", ios::app);
 	if (!salesFigures.is_open())
 	{
 		cout << "File Not Found!";
@@ -132,14 +142,24 @@ void salesperson::addSale()
 	else
 	{
 		salesFigures << date << ",";
-		for (int i = 0; i < num_of_lines; i++)
+
+		int spID_[10]{};
+			for (int i = 0; i < count; i++)
+			{
+				spID_[i] = atoi(spID[i].c_str());
+			}
+			
+			//cout << id << spID_[0];
+			//system("pause");
+
+		for (int i = 0; i < count; i++)
 		{
-			if(id == spID_)
-			{ 
-				salesFigures << spName[i];
+			if(id == spID_[i])
+			{
+				salesFigures << name[i];
 			}
 		}
-		salesFigures << "," << qty << "," << sales.get_value(qty) << endl;
+		salesFigures << "," << *pqty << "," << sales.get_value(qty) << endl;
 		salesFigures.close();
 	}
 
@@ -162,3 +182,19 @@ void salesperson::addSale()
 		salesFigures.close();
 	}*/
 }
+
+/*int a{ 1 };
+int b{ 2 };
+int c{ 3 };
+
+int* pa{ &a };
+int* pb{ &b };
+int* pc{ &c };
+
+int na{ *pa };
+int nb{ *pb };
+int nc{ *pc };
+
+cout << a << *pa << na << endl;
+	cout << b << *pb << nb << endl;
+	cout << c << *pc << nc << endl;*/
