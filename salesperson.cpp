@@ -137,8 +137,8 @@ void salesperson::addSale()
 		spID.push_back(x);
 		name.push_back(y);
 //		input.ignore(100, '\n');
-		cout << spID[i]; system("pause");
-		cout << name[i]; system("pause");
+//		cout << spID[i]; system("pause");
+//		cout << name[i]; system("pause");
 	}
 	
 	input.close();
@@ -153,9 +153,13 @@ void salesperson::addSale()
 		salesFigures << date << ",";
 
 		vector<int> spID_{};
+		int o;
+		string z;
 			for (int i = 0; i < count; i++)
 			{
-				spID_[i] = atoi(spID[i].c_str());
+				z = spID[i];
+				o = stoi(z);
+				spID_.push_back(o);
 			}
 			
 			//cout << id << spID_[0];
