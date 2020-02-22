@@ -92,10 +92,10 @@ void salesperson::addSale()
 	string date;
 //	string* pdate{ &date };
 
-	string spID[10];
+	vector<string> spID;
 //	string* pspID[10]{ &spID[10] };
 
-	string name[10]; 
+	vector<string> name; 
 	//string* pname[10]{ &name[10] };
 
 	string line;
@@ -121,17 +121,26 @@ void salesperson::addSale()
 		getline(input, line);
 		count++;
 	}
+	cout << count;
+	system("pause");
 
 	input.clear(); //because previous 'while' statement reached the eof(), seekg will not work until file is cleared
 	input.seekg(1, ios::beg);
 	input.ignore(500, '\n');
 
+	string x{};
+	string y{};
 	for (int i = 0; i < count; i++)
 	{
-		getline(input, spID[i], ',');
-		getline(input, name[i], '\n');
+		getline(input, x, ',');
+		getline(input, y, '\n');
+		spID.push_back(x);
+		name.push_back(y);
+//		input.ignore(100, '\n');
+		cout << spID[i]; system("pause");
+		cout << name[i]; system("pause");
 	}
-
+	
 	input.close();
 
 	salesFigures.open("C:/Users/Roger/Documents/salesfigures.txt", ios::app);
@@ -143,7 +152,7 @@ void salesperson::addSale()
 	{
 		salesFigures << date << ",";
 
-		int spID_[10]{};
+		vector<int> spID_{};
 			for (int i = 0; i < count; i++)
 			{
 				spID_[i] = atoi(spID[i].c_str());
