@@ -19,9 +19,8 @@ using namespace std;
 sales::sales()
 {}
 
-
-sales::sales(int id, int qty, string date)
-	:id{ id }, qty{ qty }, date{date}
+sales::sales(int sp_id, int product_id, int qty, string date)
+	:salesperson{ sp_id }, product{ product_id }, qty{ qty }, date{ date }
 {}
 
 sales::~sales(){}
@@ -29,5 +28,5 @@ sales::~sales(){}
 //returns sum of all sales
 int sales::get_value(int& x)
 {
-	return x * 22;
+	return x * product_sPrice;
 }

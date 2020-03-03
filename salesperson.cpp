@@ -10,15 +10,20 @@ using namespace std;
 
 #include "mainmenu.h"
 #include "salesperson.h"
+#include "product.h"
 #include "variables.h"
 #include "sales.h"
 
 //default constructor
-salesperson::salesperson(): id(0)
+salesperson::salesperson(): sp_id(0)
 {}
 
-salesperson::salesperson(string name, int id)
-	:name{ name }, id{ id }
+salesperson::salesperson(int sp_id)
+	:sp_id{sp_id}
+{}
+
+salesperson::salesperson(string name, int sp_id)
+	:sp_name{ name }, sp_id{ sp_id }
 {}
 
 salesperson::~salesperson() {}
@@ -26,14 +31,14 @@ salesperson::~salesperson() {}
 //enable cout for salsperson class
 ostream& operator << (ostream& os, const salesperson& p)
 {
-	os << p.name << "," << p.id << endl;
+	os << p.sp_name << "," << p.sp_id << endl;
 	return os;
 }
 
 //enable cin for salesperson class
 istream& operator>> (istream& is, salesperson& p)
 {
-	is >> p.name >> p.id;
+	is >> p.sp_name >> p.sp_id;
 	return is;
 }
 

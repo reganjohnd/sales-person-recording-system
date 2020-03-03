@@ -15,11 +15,12 @@ using namespace std;
 class salesperson
 {
 public:
-	string name;
-	int id;
+	string sp_name;
+	int sp_id;
 
 	salesperson();
-	salesperson(string name, int id);
+	salesperson(int sp_id);
+	salesperson(string name, int sp_id);
 	~salesperson();
 
 	static void addSalesPerson();
