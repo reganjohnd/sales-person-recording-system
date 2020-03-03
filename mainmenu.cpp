@@ -15,11 +15,13 @@ using namespace std;
 #include "sales.h"
 #include "salesperson.h"
 
+//function to aid interface design
 void gotoxy(int x, int y)
 {
 	printf("%c[%d;%df", 0x1B, y, x);
 }
 
+//main menu from which to select options
 void mainmenu::mainMenu()
 {
 	while (1)
@@ -35,9 +37,11 @@ void mainmenu::mainMenu()
 		gotoxy(32, 7);
 		cout << "~~~~~~~~~~~~~~~~";
 		gotoxy(32, 10);
-		cout << "1->Add Sales person";
+		cout << "1 -> Add Sales person";
 		gotoxy(32, 12);
-		cout << "2->Add Sales Figure" << endl;;
+		cout << "2 -> Add Sales Figure" << endl;;
+		gotoxy(32, 14);
+		cout << "3 -> View Sales persons";
 		cin >> menuSelect;
 		
 		switch (menuSelect)
@@ -50,29 +54,8 @@ void mainmenu::mainMenu()
 			salesperson::addSale();
 			break;
 		case 3:
-			salesperson::viewSalesPersons();
+			salesperson::view_salespersons();
 			break;
 		}
 	}
 }
-/*
-cout
-<< "*************************************************************";
-gotoxy(10, 23);
-cout
-<< "*************************************************************";
-gotoxy(32, 6);
-cout << "E D I T M E N U";
-gotoxy(32, 7);
-cout << "~~~~~~~~~~~~~~~~";
-gotoxy(32, 10);
-cout << "1: ADD PRODUCTS";
-gotoxy(32, 12);
-cout << "2: MODIFY PRODUCTS";
-gotoxy(32, 14);
-cout << "3: DELETE PRODUCTS";
-gotoxy(32, 16);
-cout << "0: EXIT";
-gotoxy(32, 19);
-cout << "Enter Choice : ";
-ch = _getche();*/

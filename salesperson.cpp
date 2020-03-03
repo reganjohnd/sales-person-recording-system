@@ -13,8 +13,7 @@ using namespace std;
 #include "variables.h"
 #include "sales.h"
 
-static vector<salesperson> spv;
-
+//default constructor
 salesperson::salesperson(): id(0)
 {}
 
@@ -24,23 +23,28 @@ salesperson::salesperson(string name, int id)
 
 salesperson::~salesperson() {}
 
+//enable cout for salsperson class
 ostream& operator << (ostream& os, const salesperson& p)
 {
 	os << p.name << "," << p.id << endl;
 	return os;
 }
+
+//enable cin for salesperson class
 istream& operator>> (istream& is, salesperson& p)
 {
 	is >> p.name >> p.id;
 	return is;
 }
 
+//incorporate cin.ignore in the getline function 
 void getlines(string& s)
 {
 	cin.ignore();
 	getline(cin, s);
 }
 
+//add new salesperson to the sale person .txt file
 void salesperson::addSalesPerson()
 {
 	system("CLS");
@@ -54,9 +58,8 @@ void salesperson::addSalesPerson()
 	cout << "ID: ";
 	cin >> i;
 
-	salesperson x{s, i};
-
 	salespersons.open("C:/Users/Roger/Documents/salespersons.txt", ios::app | ios::out);
+	
 	if (!salespersons.is_open())
 	{
 		cout<<"File not found!"<<endl;
@@ -66,17 +69,11 @@ void salesperson::addSalesPerson()
 		salespersons << i << "," << s << endl;
 		salespersons.close();
 	}
-
-	spv.push_back({ s, i });
 }
 
-void salesperson::viewSalesPersons()
-{
-	for (int i = 0; i < spv.size(); i++)
-	{
-		cout << spv[i].name << "," << spv[i].id << endl;
-	}
-}
+
+
+//add sale for specific sales person to file 
 void salesperson::addSale()
 {
 	system("CLS");
@@ -85,24 +82,14 @@ void salesperson::addSale()
 
 	int id{};
 	int* pid{ &id };
-
 	int qty{};
 	int* pqty{ &qty };
-
-	string date;
-//	string* pdate{ &date };
-
-	vector<string> spID;
-//	string* pspID[10]{ &spID[10] };
-
-	vector<string> name; 
-	//string* pname[10]{ &name[10] };
-
-	string line;
-	//string* pline{ &line };
-
 	int count{};
 	int* pcount{ &count };
+	string date;
+	vector<string> spID;
+	vector<string> name; 
+	string line;
 
 	cout << "Date: ";
 	cin.ignore();
@@ -121,11 +108,10 @@ void salesperson::addSale()
 		getline(input, line);
 		count++;
 	}
-	cout << count;
-	system("pause");
+	count--;
 
 	input.clear(); //because previous 'while' statement reached the eof(), seekg will not work until file is cleared
-	input.seekg(1, ios::beg);
+	input.seekg(ios::beg);
 	input.ignore(500, '\n');
 
 	string x{};
@@ -136,24 +122,18 @@ void salesperson::addSale()
 		getline(input, y, '\n');
 		spID.push_back(x);
 		name.push_back(y);
-//		input.ignore(100, '\n');
-//		cout << spID[i]; system("pause");
-//		cout << name[i]; system("pause");
 	}
-	
 	input.close();
 
 	salesFigures.open("C:/Users/Roger/Documents/salesfigures.txt", ios::app);
 	if (!salesFigures.is_open())
-	{
 		cout << "File Not Found!";
-	}
 	else
 	{
 		salesFigures << date << ",";
 
 		vector<int> spID_{};
-		int o;
+		int o{};
 		string z;
 			for (int i = 0; i < count; i++)
 			{
@@ -161,53 +141,51 @@ void salesperson::addSale()
 				o = stoi(z);
 				spID_.push_back(o);
 			}
-			
-			//cout << id << spID_[0];
-			//system("pause");
 
 		for (int i = 0; i < count; i++)
 		{
-			if(id == spID_[i])
+			if(id == spID_[i]) //matching inputted id with ids in file to match with the relevant name 
 			{
-				salesFigures << name[i];
+				salesFigures << name[i]; //and then output that name into salesfigures.txt file
 			}
 		}
 		salesFigures << "," << *pqty << "," << sales.get_value(qty) << endl;
 		salesFigures.close();
 	}
-
-	/*salesFigures.open("C:/Users/Roger/Documents/salesfigures.txt", ios::app | ios::out);
-	if (!salesFigures.is_open())
-	{
-		cout << "File not found!" << endl;
-	}
-	else
-	{
-		salesFigures << date << ",";
-		for (int i = 0; i < spv.size(); i++)
-		{
-			if (id == spv[i].id)
-			{
-				salesFigures << spv[i].name;
-			}
-		};
-		salesFigures << "," << qty << "," << sales.get_value(qty) << endl;
-		salesFigures.close();
-	}*/
 }
 
-/*int a{ 1 };
-int b{ 2 };
-int c{ 3 };
+int salesperson::count()
+{
+	string line;
+	int c{};
+	ifstream input;
+	input.open("C:/Users/Roger/Documents/salespersons.txt");
 
-int* pa{ &a };
-int* pb{ &b };
-int* pc{ &c };
+	while (getline(input, line))
+	{
+		c++;
+	}
+	//c--;
+	return c;
+}
 
-int na{ *pa };
-int nb{ *pb };
-int nc{ *pc };
+//display sales persons currently on file
+void salesperson::view_salespersons()
+{
+	system("CLS");
 
-cout << a << *pa << na << endl;
-	cout << b << *pb << nb << endl;
-	cout << c << *pc << nc << endl;*/
+	ifstream input;
+	input.open("C:/Users/Roger/Documents/salespersons.txt");
+
+	string name, id;
+
+	for (int i = 0; i < count(); i++)
+	{
+		getline(input, id, ',');
+		getline(input, name, '\n');
+
+		cout << id << "\t\t\t\t" << name << endl;
+	}
+	input.close();
+	system("pause");
+} 

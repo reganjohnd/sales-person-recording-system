@@ -17,13 +17,14 @@ class salesperson
 public:
 	string name;
 	int id;
-	//static vector<salesperson> spv;
 
 	salesperson();
 	salesperson(string name, int id);
 	~salesperson();
 
 	static void addSalesPerson();
-	static void viewSalesPersons();
 	static void addSale();
+
+	static void view_salespersons();
+	static int count();
 };
