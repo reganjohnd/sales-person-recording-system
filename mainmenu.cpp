@@ -1,19 +1,8 @@
 using namespace std;
-
 #include <iostream>
 #include <string>
-#include <chrono>
-#include <fstream>
-#include <vector>
-#include <numeric>
-#include <algorithm>
-#include "conio.h"
-#include <stdio.h>
-
-
-#include "mainmenu.h"
-#include "sales.h"
 #include "salesperson.h"
+#include "mainmenu.h"
 
 //function to aid interface design
 void gotoxy(int x, int y)
@@ -42,6 +31,8 @@ void mainmenu::mainMenu()
 		cout << "2 -> Add Sales Figure" << endl;;
 		gotoxy(32, 14);
 		cout << "3 -> View Sales persons";
+		gotoxy(32, 16);
+		cout << " 4 - > Delete Sales person";
 		cin >> menuSelect;
 		
 		switch (menuSelect)
@@ -55,6 +46,10 @@ void mainmenu::mainMenu()
 			break;
 		case 3:
 			salesperson::view_salespersons();
+			break;
+
+		case 4:
+			salesperson::deleteSalesPerson();
 			break;
 		}
 	}

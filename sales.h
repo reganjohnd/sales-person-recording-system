@@ -1,9 +1,6 @@
 #pragma once
-using namespace std;
 #include <string>
 
-
-#include "mainmenu.h"
 #include "salesperson.h"
 #include "product.h"
 
@@ -16,9 +13,9 @@ public:
 	string date;
 	
 	sales();
-	sales(int sp_id, int product_id, int qty, string date);
+	sales(string sp_id, string product_id, int qty, string date, double product_sPrice);
 	~sales();
 
-	int get_value(int& x);
+	double get_value(int& x);
 	
 };
